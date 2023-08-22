@@ -1,0 +1,41 @@
+GET http://localhost:3000/api/recettes
+
+###
+
+GET http://localhost:3000/api/recettes/1
+
+###
+
+GET http://localhost:3000/api/recettes/search/ta
+
+###
+
+POST http://localhost:3000/api/recettes
+Content-Type: application/json
+
+{
+  "title": "Tarte aux pommes",
+  "tempsDePreparation": 30,
+  "tempsDeCuisson": 30,
+  "ingredients": ["pommes","pate à tarte"],
+  "instructions": ["Mettre les pommes sur la pate et cuire au four."],
+  "image": "https://www.cuisineaz.com/assets/recettes/2017/09/20/1024x576/1040_tarte-aux-pommes.jpg"
+}
+
+###
+
+PUT http://localhost:3000/api/recettes/1
+Content-Type: application/json
+
+{
+  "title": "Tarte aux pommes",
+  "tempsDePreparation": 30,
+  "tempsDeCuisson": 30,
+  "ingredients": ["pommes","pate à tarte"],
+  "instructions": ["Mettre les pommes sur la pate et cuire au four."],
+  "image": "https://www.cuisineaz.com/assets/recettes/2017/09/20/1024x576/1040_tarte-aux-pommes.jpg"
+}
+
+###
+
+DELETE http://localhost:3000/api/recettes/1
