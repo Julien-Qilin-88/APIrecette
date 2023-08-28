@@ -1,6 +1,5 @@
 import validator from "validator";
 
-
 export default class Recette {
     #id;
     #title;

@@ -1,41 +1,45 @@
-GET http://localhost:3000/api/recettes
+
+GET http://localhost:3001/api/recettes
 
 ###
 
-GET http://localhost:3000/api/recettes/1
+GET http://localhost:3001/api/recettes/4
 
 ###
 
-GET http://localhost:3000/api/recettes/search/ta
+GET http://localhost:3001/api/recettes/search/ta
 
 ###
 
-POST http://localhost:3000/api/recettes
+POST http://localhost:3001/api/recettes
 Content-Type: application/json
 
 {
-  "title": "Tarte aux pommes",
+  "title": "Poulet au curry",
+  "description": "Un bon poulet au curry.",
   "tempsDePreparation": 30,
   "tempsDeCuisson": 30,
-  "ingredients": ["pommes","pate à tarte"],
-  "instructions": ["Mettre les pommes sur la pate et cuire au four."],
-  "image": "https://www.cuisineaz.com/assets/recettes/2017/09/20/1024x576/1040_tarte-aux-pommes.jpg"
+  "ingredients": ["poulet","curry"],
+  "instructions": ["Faire cuire le poulet dans le curry."],
+  "image": "https://media.istockphoto.com/id/1157636229/fr/photo/tarte-aux-poires-aux-noix-et-tarte-au-miel-maison.jpg?s=1024x1024&w=is&k=20&c=opkpE1wKliJDPwp1YRc6aRjPKswFaHXdRVJC2khlHyQ=",
+  "categorie": "Plat"
+
 }
 
 ###
 
-PUT http://localhost:3000/api/recettes/1
+PUT http://localhost:3001/api/recettes/1
 Content-Type: application/json
 
 {
-  "title": "Tarte aux pommes",
+  "title": "Tarte aux poires",
   "tempsDePreparation": 30,
   "tempsDeCuisson": 30,
   "ingredients": ["pommes","pate à tarte"],
   "instructions": ["Mettre les pommes sur la pate et cuire au four."],
-  "image": "https://www.cuisineaz.com/assets/recettes/2017/09/20/1024x576/1040_tarte-aux-pommes.jpg"
+  "image": "https://media.istockphoto.com/id/1157636229/fr/photo/tarte-aux-poires-aux-noix-et-tarte-au-miel-maison.jpg?s=1024x1024&w=is&k=20&c=opkpE1wKliJDPwp1YRc6aRjPKswFaHXdRVJC2khlHyQ="
 }
 
 ###
 
-DELETE http://localhost:3000/api/recettes/1
+DELETE http://localhost:3001/api/recettes/1

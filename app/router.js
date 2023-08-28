@@ -9,16 +9,16 @@ router.get('/', (req, res) => {
     res.send(`Welcome to the API!`);
 });
 
-router.get('/recettes', controllers.getRecettes);
+router.get('/recettes', controllers.getAllRecettes);
 
-router.get('/recettes/:id', controllers.getRecettesId);
-router.get('/recettes/search/:title', controllers.getRecettesTitle);
+router.get('/recettes/:id', controllers.getRecetteById);
+router.get('/recettes/search/:title', controllers.getRecettesByTitle);
 
-router.post('/recettes/', controllers.postRecettes);
+router.post('/recettes/', controllers.postRecette);
     
-router.put('/recettes/:id', controllers.putRecettes);
+router.put('/recettes/:id', controllers.putRecette);
 
-router.delete('/recettes/:id', controllers.deleteRecettes);
+router.delete('/recettes/:id', controllers.deleteRecette);
 
 
 export default router;
