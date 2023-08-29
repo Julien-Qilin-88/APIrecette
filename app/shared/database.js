@@ -32,18 +32,21 @@ export const Recette = sequelize.define('Recette', {
         type: DataTypes.ARRAY(DataTypes.STRING)
     },
     image: {
-        type: DataTypes.TEXT
+        type: DataTypes.TEXT,
+        allowNull: true // Le champ peut être vide
     },
     categorie: {
         type: DataTypes.STRING,
         allowNull: false, // Le champ ne peut pas être vide
         validate: {
-            isIn: [['Entrée', 'Plat', 'Dessert', 'Boisson', 'Autre']] // Seulement ces valeurs sont acceptées
+            isIn: [['Entrée', 'Salade', 'Plat', 'Dessert', 'Boisson', 'Sauce',  'Autre']] // Seulement ces valeurs sont acceptées
         }
     }
 })
 
-export const initSequelize = async ({ force = false } = {}) => {
+export const initSequelize = async ({ force = true } = {}) => {
+    // await sequelize.drop();
     await sequelize.sync();
     console.log("All models were synchronized successfully.");
 }
+

@@ -5,7 +5,11 @@ import fs from 'fs';
 
 export const getAllRecettes = async function (req, res) {
     try {
-        const recettes = await Recette.findAll();
+        const recettes = await Recette.findAll(
+            {
+                order: [['title', 'ASC']] // Tri par ordre alphabétique croissant du champ 'titre'
+            }
+        );
         res.json(recettes);
     } catch (error) {
         console.error(error);
@@ -20,7 +24,7 @@ export const getRecetteById = async function (req, res) {
             id: id
         }
     });
-    
+
     if (recette) {
         res.json(recette);
     } else {
@@ -37,7 +41,7 @@ export const getRecettesByTitle = async function (req, res) {
             }
         }
     });
-    
+
     if (recettes.length > 0) {
         res.json(recettes);
     } else {
@@ -45,24 +49,42 @@ export const getRecettesByTitle = async function (req, res) {
     }
 }
 
+export const getRecettesPerPage = async function (req, res) {
+    const ITEMS_PER_PAGE = 5;
+    const page = parseInt(req.params.page) || 0;
+    const offset = page * ITEMS_PER_PAGE;
+
+    try {
+        const paginatedRecettes = await Recette.findAll({
+            offset,
+            limit: ITEMS_PER_PAGE
+        });
+        res.json(paginatedRecettes);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erreur lors de la récupération des recettes' });
+    }
+}
+
 
 export const postRecette = async function (req, res) {
     try {
         const { body } = req;
-        
+
+        console.log('Data received:', body);
 
         // Créer une nouvelle instance de la recette avec les données et l'image
         const recette = await Recette.create({
             ...body,
-        
         });
-        
+
         res.status(201).json({ message: 'Recette créée avec succès' });
     } catch (error) {
-        console.error(error);
+        console.error('Error:', error);
         res.status(500).json({ message: 'Erreur lors de la création de la recette' });
     }
 }
+
 
 export const putRecette = async function (req, res) {
     try {

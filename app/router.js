@@ -14,6 +14,8 @@ router.get('/recettes', controllers.getAllRecettes);
 router.get('/recettes/:id', controllers.getRecetteById);
 router.get('/recettes/search/:title', controllers.getRecettesByTitle);
 
+router.get('/recettes/page/:page', controllers.getRecettesPerPage);
+
 router.post('/recettes/', controllers.postRecette);
     
 router.put('/recettes/:id', controllers.putRecette);
