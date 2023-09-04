@@ -39,7 +39,7 @@ export const Recette = sequelize.define('Recette', {
         type: DataTypes.STRING,
         allowNull: false, // Le champ ne peut pas être vide
         validate: {
-            isIn: [['Entrée', 'Salade', 'Plat', 'Dessert', 'Boisson', 'Sauce',  'Autre']] // Seulement ces valeurs sont acceptées
+            isIn: [['Entrée', 'Salade', 'Plat', 'Dessert', 'Boisson', 'Sauce', 'Autre']] // Seulement ces valeurs sont acceptées
         }
     }
 })
