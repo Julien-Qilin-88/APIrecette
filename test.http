@@ -1,21 +1,25 @@
 
-GET http://localhost:3001/api/recettes
+GET http://localhost:3002/api/recettes
 
 ###
 
-GET http://localhost:3001/api/recettes/4
+GET http://localhost:3002/api/recettes/4
 
 ###
 
-GET http://localhost:3001/api/recettes/search/ta
+GET http://localhost:3002/api/recettes/search/ta
 
 ###
 
-GET http://localhost:3001/api/recettes/page/1
+GET http://localhost:3002/api/recette-du-jour
 
 ###
 
-POST http://localhost:3001/api/recettes
+GET http://localhost:3002/api/recettes/page/1
+
+###
+
+POST http://localhost:3002/api/recettes
 Content-Type: application/json
 
 # {
@@ -101,7 +105,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3001/api/recettes/1
+PUT http://localhost:3002/api/recettes/1
 Content-Type: application/json
 
 {
@@ -110,12 +114,12 @@ Content-Type: application/json
   "tempsDeCuisson": 30,
   "ingredients": ["pommes","pate à tarte"],
   "instructions": ["Mettre les pommes sur la pate et cuire au four."],
-  "image": "https://media.istockphoto.com/id/1157636229/fr/photo/tarte-aux-poires-aux-noix-et-tarte-au-miel-maison.jpg?s=1024x1024&w=is&k=20&c=opkpE1wKliJDPwp1YRc6aRjPKswFaHXdRVJC2khlHyQ=",
+  "image": "http://localhost:3002/images/Logo_minimaliste-1.svg",
   "categorie": "Dessert"
 }
 
 ###
 
-DELETE http://localhost:3001/api/recettes/1
+DELETE http://localhost:3002/api/recettes/1
 
 

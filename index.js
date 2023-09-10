@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv';
 import router from './app/router.js';
 import { initSequelize } from './app/shared/database.js';
 
+
 await initSequelize();
 
 const apiRoot = '/api';
@@ -13,6 +14,8 @@ dotenv.config();
 
 const port = process.env.PORT || 3001;
 const app = express();
+
+app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
