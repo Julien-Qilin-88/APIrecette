@@ -13,26 +13,44 @@ export const Recette = sequelize.define('Recette', {
         autoIncrement: true,
         primaryKey: true
     },
+    idUser: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    auteur: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },    
     title: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     description: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     tempsDePreparation: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     tempsDeCuisson: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     ingredients: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false
     },
     instructions: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false
     },
     image: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT, // Utiliser DataTypes.TEXT au lieu de DataTypes.STRING
+        allowNull: true,
+        validate: {
+            isUrl: true
+        }
     },
     categorie: {
         type: DataTypes.STRING,
@@ -41,7 +59,12 @@ export const Recette = sequelize.define('Recette', {
             isIn: [['Entrée', 'Salade', 'Plat', 'Dessert', 'Boisson', 'Sauce', 'Autre']] // Seulement ces valeurs sont acceptées
         }
     }
-})
+}, {
+    sequelize,
+    modelName: 'Recette'
+}
+)
+
 
 export const initSequelize = async ({ force = true } = {}) => {
     // await sequelize.drop();

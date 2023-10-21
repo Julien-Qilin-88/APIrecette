@@ -1,16 +1,21 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-import recettes from '../data.js';
 import * as controllers from './controllers/controllers.js';
-import multer from 'multer';
+import * as middlewares from './middlewares/middlewares.js';
+
 
 const router = express.Router();
+const app = express();
 
 // API router
 
 router.get('/', (req, res) => {
     res.send(`Welcome to the API!`);
 });
+
+// Middleware de vérification du token
+app.use(middlewares.verifyToken);
+
+// router.get('/images', controllers.getNumberImages); 
 
 router.get('/recettes', controllers.getAllRecettes);
 
@@ -21,15 +26,15 @@ router.get('/recette-du-jour', controllers.getRecetteRandom);
 
 router.get('/recettes/page/:page', controllers.getRecettesPerPage);
 
-router.post('/recettes/', controllers.postRecette);
+router.post('/recettes/', controllers.postRecette, middlewares.verifyToken);
 
 router.put('/recettes/:id', controllers.putRecette);
 
 router.delete('/recettes/:id', controllers.deleteRecette);
 
-// Multer router
+// // Multer router
 
-router.post('/upload', controllers.upload.single('image'), controllers.handleImageUpload);
+// router.post('/upload', controllers.upload.single('image'), controllers.handleImageUpload);
 
 
 

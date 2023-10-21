@@ -1,30 +1,5 @@
 import { Recette } from '../shared/database.js';
 import { Op } from 'sequelize';
-import fs from 'fs';
-import multer from 'multer';
-
-
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/images');
-    },
-    filename: function (req, file, cb) {
-        const extension = file.originalname.split('.').pop();
-        const noExtension = file.originalname.split('.').slice(0, -1).join('.');
-        const recipeId = currentRecipeId; // Supposons que l'ID de la recette soit dans le corps de la requête
-        cb(null, `${noExtension}-${recipeId}.${extension}`);
-    }
-});
-
-export const upload = multer({ storage: storage });
-
-// Route POST pour l'upload d'images
-export const handleImageUpload = async function (req, res) {
-
-    res.status(200).send("ok")
-
-};
 
 export const getAllRecettes = async function (req, res) {
     try {
@@ -33,6 +8,7 @@ export const getAllRecettes = async function (req, res) {
                 order: [['title', 'ASC']] // Tri par ordre alphabétique croissant du champ 'titre'
             }
         );
+
         res.json(recettes);
     } catch (error) {
         console.error(error);
@@ -90,20 +66,17 @@ export const getRecettesPerPage = async function (req, res) {
 }
 
 let currentRecipeId = null;
+
 export const postRecette = async function (req, res) {
     try {
         const { body } = req;
 
         console.log('Data received:', body);
 
-        // Créer une nouvelle instance de la recette avec les données et l'image
         const recette = await Recette.create({
-            ...body,
-
-
+            ...body
         });
 
-        // Stocker temporairement l'ID de la recette créée
         currentRecipeId = recette.id;
         console.log('currentRecipeId:', currentRecipeId);
 
@@ -119,13 +92,9 @@ export const putRecette = async function (req, res) {
     try {
         const body = req.body;
         const id = parseInt(req.params.id);
+        console.log('Data received:', body);
 
-        // Vérifier si une nouvelle image a été téléchargée
         let updatedData = { ...body };
-        if (req.file) {
-            const image = await fs.readFile(req.file.path);
-            updatedData.image = image;
-        }
 
         // Mettre à jour la recette et récupérer le nombre de lignes modifiées
         const [updatedRows] = await Recette.update(updatedData, {
@@ -199,6 +168,26 @@ export const getRecetteRandom = async function (req, res) {
 // Planifier la mise à jour de l'ID de la recette chaque jour à minuit
 const ONE_DAY = 24 * 60 * 60 * 1000; // Durée d'une journée en millisecondes
 setInterval(updateDailyRecetteId, ONE_DAY);
+
+
+
+// export const getNumberImages = function (req, res) {
+//     const dossierImages = 'public/images';
+//     fs.readdir(dossierImages, (err, fichiers) => {
+//         if (err) {
+//             console.error(err);
+//             res.status(500).json({ message: 'Erreur lors de la récupération du nombre d\'images' });
+//         } else {
+//             const images = fichiers.filter(fichier => {
+//                 const extensionsImages = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg'];
+//                 const extension = fichier.toLowerCase().substring(fichier.lastIndexOf('.'));
+//                 return extensionsImages.includes(extension);
+//             });
+//             const nombreImages = images.length;
+//             res.json({ nombreImages });
+//         }
+//     });
+// };
 
 
 

@@ -22,104 +22,34 @@ GET http://localhost:3002/api/recettes/page/1
 POST http://localhost:3002/api/recettes
 Content-Type: application/json
 
-# {
-#         "title": "Salade César",
-#         "description": "Une délicieuse salade avec des croûtons et une vinaigrette crémeuse.",
-#         "tempsDePreparation": 15,
-#         "tempsDeCuisson": 0,
-#         "ingredients": ["Laitue romaine", "Croûtons", "Parmesan", "Poulet grillé", "Vinaigrette César"],
-#         "instructions": ["Laver et déchirer la laitue en morceaux.", "Ajouter les croûtons et le parmesan.", "Ajouter le poulet grillé tranché.", "Arroser de vinaigrette César.", "Mélanger et servir."],
-#         "image": "lien_de_limage_1",
-#         "categorie": "Salade"
-#     }
-    # {
-    #     "title": "Pâtes à la Carbonara",
-    #     "description": "Des pâtes crémeuses avec du bacon, du parmesan et des œufs.",
-    #     "tempsDePreparation": 10,
-    #     "tempsDeCuisson": 15,
-    #     "ingredients": ["Pâtes spaghetti", "Bacon", "Œufs", "Parmesan", "Poivre noir"],
-    #     "instructions": ["Cuire les pâtes selon les instructions sur l'emballage.", "Faire revenir le bacon dans une poêle jusqu'à ce qu'il soit croustillant.", "Mélanger les œufs et le parmesan dans un bol.", "Égoutter les pâtes et les mélanger avec le mélange d'œufs.", "Ajouter le bacon et saupoudrer de poivre noir.", "Mélanger et servir immédiatement."],
-    #     "image": "lien_de_limage_2",
-    #     "categorie": "Plat"
-    # }
-    # {
-    #     "title": "Tacos au Poulet",
-    #     "description": "Des tacos délicieux garnis de poulet grillé et de légumes frais.",
-    #     "tempsDePreparation": 20,
-    #     "tempsDeCuisson": 15,
-    #     "ingredients": ["Tortillas", "Poulet grillé", "Laitue", "Tomates", "Fromage", "Crème sure"],
-    #     "instructions": ["Chauffer les tortillas.", "Remplir les tortillas avec du poulet grillé, de la laitue, des tomates et du fromage.", "Ajouter une cuillerée de crème sure.", "Plier les tortillas et servir."],
-    #     "image": "lien_de_limage_3",
-    #     "categorie": "Plat"
-    # }
-    # {
-    #     "title": "Gâteau au Chocolat Fondant",
-    #     "description": "Un gâteau au chocolat décadent avec un cœur fondant.",
-    #     "tempsDePreparation": 20,
-    #     "tempsDeCuisson": 25,
-    #     "ingredients": ["Chocolat noir", "Beurre", "Sucre", "Œufs", "Farine"],
-    #     "instructions": ["Faire fondre le chocolat noir et le beurre au bain-marie.", "Battre les œufs avec le sucre jusqu'à obtenir un mélange mousseux.", "Incorporer le mélange de chocolat fondu.", "Ajouter la farine et mélanger jusqu'à obtenir une pâte lisse.", "Verser la pâte dans des moules individuels et cuire au four préchauffé.", "Le centre doit rester fondant. Laisser refroidir légèrement avant de servir."],
-    #     "image": "lien_de_limage_4",
-    #     "categorie": "Dessert"
-    # }
-    # {
-    #     "title": "Smoothie Vert Énergisant",
-    #     "description": "Un smoothie frais et sain pour démarrer la journée.",
-    #     "tempsDePreparation": 10,
-    #     "tempsDeCuisson": 0,
-    #     "ingredients": ["Épinards", "Banane", "Ananas", "Jus d'orange", "Graines de chia"],
-    #     "instructions": ["Mixer les épinards, la banane et l'ananas.", "Ajouter le jus d'orange et les graines de chia.", "Mélanger jusqu'à obtenir une consistance lisse.", "Verser dans un verre et déguster."],
-    #     "image": "lien_de_limage_5",
-    #     "categorie": "Boisson"
-    # }
-    # {
-    #     "title": "Riz Frit aux Légumes",
-    #     "description": "Un plat de riz frit délicieux avec des légumes croquants.",
-    #     "tempsDePreparation": 15,
-    #     "tempsDeCuisson": 20,
-    #     "ingredients": ["Riz cuit", "Légumes variés (carottes, petits pois, poivrons)", "Oeufs", "Sauce soja", "Huile de sésame"],
-    #     "instructions": ["Faire sauter les légumes dans une poêle avec de l'huile de sésame.", "Pousser les légumes sur le côté et faire cuire les œufs battus dans la même poêle.", "Mélanger les œufs et les légumes.", "Ajouter le riz cuit et la sauce soja.", "Faire sauter jusqu'à ce que tout soit bien mélangé et chaud."],
-    #     "image": "lien_de_limage_6",
-    #     "categorie": "Plat"
-    # }
-    # {
-    #     "title": "Salade de Fruits Frais",
-    #     "description": "Une salade colorée de fruits frais et juteux.",
-    #     "tempsDePreparation": 10,
-    #     "tempsDeCuisson": 0,
-    #     "ingredients": ["Fraises", "Ananas", "Pastèque", "Raisins", "Menthe fraîche"],
-    #     "instructions": ["Couper les fruits en morceaux.", "Mélanger les fruits dans un grand bol.", "Garnir de feuilles de menthe fraîche.", "Réfrigérer avant de servir."],
-    #     "image": "lien_de_limage_7",
-    #     "categorie": "Salade"
-    # }
-    # {
-    #     "title": "Pizza Margherita",
-    #     "description": "Une pizza classique avec de la mozzarella, des tomates et du basilic.",
-    #     "tempsDePreparation": 15,
-    #     "tempsDeCuisson": 12,
-    #     "ingredients": ["Pâte à pizza", "Sauce tomate", "Mozzarella", "Tomates", "Basilic frais"],
-    #     "instructions": ["Préchauffer le four selon les instructions de la pâte à pizza.", "Étaler la pâte sur une plaque de cuisson.", "Étaler la sauce tomate sur la pâte.", "Ajouter la mozzarella et les tranches de tomates.", "Cuire au four jusqu'à ce que le fromage soit fondu et la croûte dorée.", "Garnir de feuilles de basilic frais avant de servir."],
-    #     "image": "lien_de_limage",
-    #     "categorie": "Plat"
-    # }
+
+
+    {
+      "idUser": 3,
+      "title": "Pizza Margherita",
+      "image": "https://www.example.com/pizza-margherita.jpg",
+      "description": "Une délicieuse pizza classique à base de sauce tomate, de mozzarella et de basilic.",
+      "tempsDePreparation": 15,
+      "tempsDeCuisson": 20,
+      "ingredients": ["Pâte à pizza", "Sauce tomate", "Mozzarella", "Basilic frais"],
+      "instructions": ["Étalez la pâte à pizza", "Ajoutez la sauce tomate, la mozzarella et le basilic", "Cuisez au four jusqu'à ce que la croûte soit dorée"],
+      "categorie": "Plat"
+    }
 
 ###
 
-PUT http://localhost:3002/api/recettes/1
+PUT http://localhost:3002/api/recettes/2
 Content-Type: application/json
 
 {
-  "title": "Tarte aux poires",
-  "tempsDePreparation": 30,
-  "tempsDeCuisson": 30,
-  "ingredients": ["pommes","pate à tarte"],
-  "instructions": ["Mettre les pommes sur la pate et cuire au four."],
-  "image": "http://localhost:3002/images/Logo_minimaliste-1.svg",
-  "categorie": "Dessert"
+  "image": "",
+  
 }
 
 ###
 
 DELETE http://localhost:3002/api/recettes/1
 
+###
 
+GET http://localhost:3002/api/images
