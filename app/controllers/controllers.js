@@ -71,14 +71,11 @@ export const postRecette = async function (req, res) {
     try {
         const { body } = req;
 
-        console.log('Data received:', body);
-
         const recette = await Recette.create({
             ...body
         });
 
         currentRecipeId = recette.id;
-        console.log('currentRecipeId:', currentRecipeId);
 
         res.status(201).json({ message: 'Recette créée avec succès' });
     } catch (error) {
@@ -92,7 +89,6 @@ export const putRecette = async function (req, res) {
     try {
         const body = req.body;
         const id = parseInt(req.params.id);
-        console.log('Data received:', body);
 
         let updatedData = { ...body };
 
